@@ -1850,8 +1850,8 @@ function sessionClicked(date, type) {
   // LIVE (green ✓)
   b = document.getElementById('badge-ai'); b.textContent = '\u2713 LLM (Gemini)'; b.classList.add('active');
   b = document.getElementById('messaging-badge'); b.textContent = '\u2713 Sui Messaging SDK'; b.classList.add('active');
-  // TESTNET-READY (orange)
-  b = document.getElementById('badge-sui'); b.textContent = 'Sui Testnet (testnet-ready)'; b.classList.add('simulated');
+  // Sui Testnet — LIVE (messaging SDK runs on testnet)
+  b = document.getElementById('badge-sui'); b.textContent = '\u2713 Sui Testnet'; b.classList.add('active');
   b = document.getElementById('badge-seal'); b.textContent = 'Seal Encryption (testnet-ready)'; b.classList.add('simulated');
   b = document.getElementById('badge-memwal'); b.textContent = 'MemWal (testnet-ready)'; b.classList.add('simulated');
 })();
