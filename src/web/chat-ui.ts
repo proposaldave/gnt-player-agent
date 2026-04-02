@@ -326,7 +326,7 @@ export function chatPage(): string {
 <div class="container">
   <div class="header">
     <div class="hero-canvas-wrap" id="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
-    <p class="tagline" style="font-size:23px;font-weight:600;line-height:1.3;">How do you really feel about the people in your community? Your agent is yours — you own it. Your data is private — you control it. It negotiates your perfect matches, and never shares a word.</p>
+    <p class="tagline" style="font-size:23px;font-weight:600;line-height:1.5;">How do you really feel about the people in your community?<br>Your agent is yours — you own it. Your data is private — you control it.<br>It negotiates your perfect matches, and never shares a word.</p>
     <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge" style="display:none">Sui Messaging SDK</span>
