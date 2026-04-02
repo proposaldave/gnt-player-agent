@@ -51,18 +51,25 @@ export function demoResponse(
   const msg = userMessage.toLowerCase();
   const graphUpdates: GraphUpdate[] = [];
 
-  // === TURN 1: Respond to schedule, surface play history ===
+  // === TURN 1: Acknowledge what user said, advance to new topic ===
   if (turn === 1) {
     graphUpdates.push({ action: 'reveal', nodeIndex: 0 });
-    if (ctx.frequentPartners.length >= 1) {
-      const p1 = ctx.frequentPartners[0];
+    const improving = msg.includes('improv') || msg.includes('struggling') || msg.includes('better') || msg.includes('learning') || msg.includes('grow');
+    const social = msg.includes('fun') || msg.includes('social') || msg.includes('friends') || msg.includes('hang') || msg.includes('people');
+    if (improving) {
       return {
-        text: `Got it. Looking at your history — ${ctx.totalEventsPlayed} sessions. And ${p1.playerName} keeps showing up — you two have played ${p1.timesPlayed} times. Is that someone you'd want to keep being matched with?`,
+        text: `That's real — and it's exactly the kind of thing that helps me match you well. Some people push your game, others hold you back. When you think about your ${ctx.totalEventsPlayed} sessions — who do you leave the court feeling like you actually got better?`,
+        graphUpdates,
+      };
+    }
+    if (social) {
+      return {
+        text: `Love that — the people make the game. Looking at your ${ctx.totalEventsPlayed} sessions, some names keep showing up. What makes a session feel great for you — the group energy, the competition, or just good vibes?`,
         graphUpdates,
       };
     }
     return {
-      text: `Got it. I can see ${ctx.totalEventsPlayed} sessions in your history. How have those been going — mostly great, or a mixed bag?`,
+      text: `Appreciate that. I can see ${ctx.totalEventsPlayed} sessions in your history — that's a lot of court time. When you think about the best ones, what made them stand out? The people? The level of play? Something else?`,
       graphUpdates,
     };
   }

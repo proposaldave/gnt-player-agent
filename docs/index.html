@@ -713,11 +713,15 @@ function demoResponse(convo, ctx, userMessage) {
 
   if (turn === 1) {
     graphUpdates.push({ action: 'reveal', nodeIndex: 0 });
-    if (ctx.frequentPartners.length >= 1) {
-      var p1 = ctx.frequentPartners[0];
-      return { text: 'Got it. Looking at your history \u2014 ' + ctx.totalEventsPlayed + ' sessions. And ' + p1.playerName + ' keeps showing up \u2014 you two have played ' + p1.timesPlayed + ' times. Is that someone you\'d want to keep being matched with?', graphUpdates: graphUpdates };
+    var improving = msg.indexOf('improv') >= 0 || msg.indexOf('struggling') >= 0 || msg.indexOf('better') >= 0 || msg.indexOf('learning') >= 0 || msg.indexOf('grow') >= 0;
+    var social = msg.indexOf('fun') >= 0 || msg.indexOf('social') >= 0 || msg.indexOf('friends') >= 0 || msg.indexOf('hang') >= 0 || msg.indexOf('people') >= 0;
+    if (improving) {
+      return { text: 'That\'s real \u2014 and it\'s exactly the kind of thing that helps me match you well. Some people push your game, others hold you back. When you think about your ' + ctx.totalEventsPlayed + ' sessions \u2014 who do you leave the court feeling like you actually got better?', graphUpdates: graphUpdates };
     }
-    return { text: 'Got it. I can see ' + ctx.totalEventsPlayed + ' sessions in your history. How have those been going \u2014 mostly great, or a mixed bag?', graphUpdates: graphUpdates };
+    if (social) {
+      return { text: 'Love that \u2014 the people make the game. Looking at your ' + ctx.totalEventsPlayed + ' sessions, some names keep showing up. What makes a session feel great for you \u2014 the group energy, the competition, or just good vibes?', graphUpdates: graphUpdates };
+    }
+    return { text: 'Appreciate that. I can see ' + ctx.totalEventsPlayed + ' sessions in your history \u2014 that\'s a lot of court time. When you think about the best ones, what made them stand out? The people? The level of play? Something else?', graphUpdates: graphUpdates };
   }
 
   if (turn === 2) {
