@@ -330,7 +330,7 @@ export function chatPage(): string {
     <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge" style="display:none">Sui Messaging SDK</span>
-      <span class="badge claude" id="badge-ai">Live AI</span>
+      <span class="badge claude" id="badge-ai">LLM (Gemini)</span>
       <span class="badge seal" id="badge-seal">Seal Encryption</span>
       <span class="badge" id="badge-memwal">MemWal</span>
     </div>
@@ -1454,13 +1454,13 @@ fetch('/api/personas').then(function(r) { return r.json(); }).then(function(pers
 
 /* ============ ACTIVATE BADGES ON LOAD ============ */
 fetch('/api/status').then(function(r) { return r.json(); }).then(function(s) {
-  if (s.isLive) { var b = document.getElementById('badge-ai'); b.textContent = '\u2713 Live AI (Gemini)'; b.classList.add('active'); }
+  if (s.isLive) { var b = document.getElementById('badge-ai'); b.textContent = '\u2713 LLM (Gemini)'; b.classList.add('active'); }
   if (s.messaging) { var b = document.getElementById('messaging-badge'); b.style.display = ''; b.textContent = '\u2713 Sui Messaging SDK'; b.classList.add('active'); }
   if (s.sui) { var b = document.getElementById('badge-sui'); b.textContent = '\u2713 Sui Testnet'; b.classList.add('active'); }
   if (s.seal === true) { var b = document.getElementById('badge-seal'); b.textContent = '\u2713 Seal Encryption'; b.classList.add('active'); }
-  else if (s.seal === 'simulated') { var b = document.getElementById('badge-seal'); b.textContent = 'Seal Encryption (simulated)'; b.classList.add('simulated'); }
+  else if (s.seal === 'simulated') { var b = document.getElementById('badge-seal'); b.textContent = 'Seal Encryption (testnet-ready)'; b.classList.add('simulated'); }
   if (s.walrus === true) { var b = document.getElementById('badge-memwal'); b.textContent = '\u2713 MemWal'; b.classList.add('active'); }
-  else if (s.walrus === 'simulated') { var b = document.getElementById('badge-memwal'); b.textContent = 'MemWal (simulated)'; b.classList.add('simulated'); }
+  else if (s.walrus === 'simulated') { var b = document.getElementById('badge-memwal'); b.textContent = 'MemWal (testnet-ready)'; b.classList.add('simulated'); }
 }).catch(function() {});
 
 /* ============ COMPARISON CARD MINI-GRAPH ============ */

@@ -324,7 +324,7 @@
     <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge">Sui Messaging SDK</span>
-      <span class="badge claude" id="badge-ai">Live AI</span>
+      <span class="badge claude" id="badge-ai">LLM (Gemini)</span>
       <span class="badge seal" id="badge-seal">Seal Encryption</span>
       <span class="badge" id="badge-memwal">MemWal</span>
     </div>
@@ -1847,16 +1847,13 @@ function sessionClicked(date, type) {
 /* ============ ACTIVATE BADGES (honest status) ============ */
 (function() {
   var b;
-  // AI — LIVE: real Gemini API calls
-  b = document.getElementById('badge-ai'); b.textContent = '\u2713 Live AI (Gemini)'; b.classList.add('active');
-  // Sui Messaging SDK — LIVE on testnet
+  // LIVE (green ✓)
+  b = document.getElementById('badge-ai'); b.textContent = '\u2713 LLM (Gemini)'; b.classList.add('active');
   b = document.getElementById('messaging-badge'); b.textContent = '\u2713 Sui Messaging SDK'; b.classList.add('active');
-  // Sui Testnet — contracts compiled + tested, messaging live
-  b = document.getElementById('badge-sui'); b.textContent = 'Sui Testnet (integrated)'; b.classList.add('sui');
-  // Seal — code integrated, not yet calling live Seal
-  b = document.getElementById('badge-seal'); b.textContent = 'Seal Encryption (testnet-ready)';
-  // MemWal — code integrated, not yet calling live Walrus
-  b = document.getElementById('badge-memwal'); b.textContent = 'MemWal (testnet-ready)';
+  // TESTNET-READY (orange)
+  b = document.getElementById('badge-sui'); b.textContent = 'Sui Testnet (testnet-ready)'; b.classList.add('simulated');
+  b = document.getElementById('badge-seal'); b.textContent = 'Seal Encryption (testnet-ready)'; b.classList.add('simulated');
+  b = document.getElementById('badge-memwal'); b.textContent = 'MemWal (testnet-ready)'; b.classList.add('simulated');
 })();
 
 /* ============ COMPARISON CARD MINI-GRAPH ============ */
