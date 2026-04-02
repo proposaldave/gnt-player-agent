@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment (contains API keys and private keys)
+.env
+
+# Session persistence
+.sessions.json
+
+# Logs
+server.log
+*.log
+
+# OS
+desktop.ini
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code internal
+.claude/
+
+# Internal dev docs (not for public repo)
+PASTE_THIS_PROMPT.md
+MESSAGING_SDK_INTEGRATION_PROMPT.md
+MEMWAL_INTEGRATION_PROMPT.md
+HANDOFF.md
