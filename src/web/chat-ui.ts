@@ -351,7 +351,7 @@ export function chatPage(): string {
   <div id="data-compare-section">
     <div class="data-compare">
       <div class="data-card old-world">
-        <div class="card-label">DUPR</div>
+        <div class="card-label">Competitive Skill Rating</div>
         <div class="rating-num">3.5</div>
         <div class="rating-stars">\u2B50\u2B50\u2B50\u2BEA</div>
         <div class="empty-line"></div>
