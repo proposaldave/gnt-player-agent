@@ -462,10 +462,24 @@ export function chatPage(): string {
       </div>
 
       <div class="settings-section">
-        <div class="section-title">Preferred Locations</div>
-        <div class="settings-chips" id="location-chips">
-          <span class="settings-chip active" onclick="toggleChip(this)">Rye</span>
-          <span class="settings-chip" onclick="toggleChip(this)">Middleton</span>
+        <div class="section-title">\u{1F512} Agent Matching Permissions</div>
+        <div style="font-size:11px;color:var(--text2);padding:0 0 8px;">Your agent only matches you where you authorize it. Toggle off to revoke access.</div>
+        <div class="settings-row">
+          <div class="row-label"><span class="row-icon">\u{1F3D3}</span> NEPC Rye</div>
+          <div class="settings-toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="settings-row">
+          <div class="row-label"><span class="row-icon">\u{1F3D3}</span> NEPC Middleton</div>
+          <div class="settings-toggle" onclick="this.classList.toggle('on')"></div>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="section-title">\u{1F310} Community Intelligence</div>
+        <div style="font-size:11px;color:var(--text2);padding:0 0 8px;">Should your agent help improve matches for the whole community, or only for you?</div>
+        <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:6px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" style="accent-color:var(--accent)"> <strong>\u{1F512} Private only</strong> \u2014 my agent matches only for me. No data leaves my agent.</label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" checked style="accent-color:var(--green)"> <strong>\u{1F91D} Community contributor</strong> \u2014 my agent shares anonymized patterns to improve matches for everyone. Your preferences, avoids, and reasons are never shared.</label>
         </div>
       </div>
 
