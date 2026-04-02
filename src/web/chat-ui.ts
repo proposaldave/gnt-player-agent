@@ -362,9 +362,9 @@ export function chatPage(): string {
       <div class="data-card new-world">
         <div class="card-label">Give 'n Take</div>
         <div class="new-world-canvas"><canvas id="compare-canvas"></canvas></div>
-        <div class="signal-row"><span class="signal-icon">\u{1F49A}</span><span class="signal-text"><strong class="green">Sarah M.</strong> \u2014 go-to partner \u00B7 always brings energy</span></div>
-        <div class="signal-row"><span class="signal-icon">\u{1F91D}</span><span class="signal-text"><strong class="warm">Tom K.</strong> \u2014 most fun in the club \u00B7 pushes your game</span></div>
-        <div class="signal-row"><span class="signal-icon">\u26A0\uFE0F</span><span class="signal-text"><strong class="red">Mike D.</strong> \u2014 avoid \u00B7 reason stays private</span></div>
+        <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#34d399;color:#0a0e1a;font-size:10px;font-weight:700">SM</span></span><span class="signal-text"><strong class="green">Sarah M.</strong> \u2014 go-to partner \u00B7 always brings energy</span></div>
+        <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f59e0b;color:#0a0e1a;font-size:10px;font-weight:700">TK</span></span><span class="signal-text"><strong class="warm">Tom K.</strong> \u2014 most fun in the club \u00B7 pushes your game</span></div>
+        <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f87171;color:#0a0e1a;font-size:10px;font-weight:700">MD</span></span><span class="signal-text"><strong class="red">Mike D.</strong> \u2014 avoid \u00B7 reason stays private</span></div>
         <div class="signal-row"><span class="signal-icon">\u{1F512}</span><span class="signal-text">Player-owned data. Nobody sees it but you.</span></div>
       </div>
     </div>
