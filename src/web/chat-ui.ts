@@ -326,7 +326,7 @@ export function chatPage(): string {
 <div class="container">
   <div class="header">
     <div class="hero-canvas-wrap" id="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
-    <p class="tagline" style="font-size:23px;font-weight:600;line-height:1.5;">How do you really feel about the people in your community?<br>Your agent is yours — you control it. Your data is private — you own it.<br>It negotiates perfect matches on your behalf, and never shares a word.</p>
+    <p class="tagline" style="font-size:23px;font-weight:600;line-height:1.5;">How do you really feel about the people in your community?<br>Your agent is your private social diary — you own it, you control it.<br>It negotiates perfect matches on your behalf, and never shares a word.</p>
     <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge" style="display:none">Sui Messaging SDK</span>
@@ -365,7 +365,7 @@ export function chatPage(): string {
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#34d399;color:#0a0e1a;font-size:10px;font-weight:700">SM</span></span><span class="signal-text"><strong class="green">Sarah M.</strong> \u2014 go-to partner \u00B7 always brings energy</span></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f59e0b;color:#0a0e1a;font-size:10px;font-weight:700">TK</span></span><span class="signal-text"><strong class="warm">Tom K.</strong> \u2014 most fun in the club \u00B7 pushes your game</span></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f87171;color:#0a0e1a;font-size:10px;font-weight:700">MD</span></span><span class="signal-text"><strong class="red">Mike D.</strong> \u2014 avoid \u00B7 reason stays private</span></div>
-        <div class="signal-row"><span class="signal-icon">\u{1F512}</span><span class="signal-text">Player-owned data. Nobody sees it but you.</span></div>
+        <div class="signal-row"><span class="signal-icon">\u{1F512}</span><span class="signal-text">Your private diary. Nobody sees it but you.</span></div>
       </div>
     </div>
     <!-- clean -->
