@@ -374,8 +374,8 @@ export function chatPage(): string {
   <!-- Start Section -->
   <div id="persona-section" class="persona-section">
     <div class="mode-toggle" id="mode-toggle">
-      <button class="mode-opt active" id="mode-chat" onclick="setMode('chat')">Chat</button>
-      <button class="mode-opt" id="mode-gui" onclick="setMode('gui')">GUI</button>
+      <button class="mode-opt" id="mode-chat" onclick="setMode('chat')">Chat</button>
+      <button class="mode-opt active" id="mode-gui" onclick="setMode('gui')">GUI</button>
     </div>
     <div class="mode-hint" id="mode-hint"></div>
     <button class="start-btn" id="start-btn" onclick="startConversation()">\u{1F512} Start Conversation with your Private Give 'n Take Agent</button>
@@ -580,7 +580,7 @@ export function chatPage(): string {
 </div>
 
 <script>
-var state = { personaIndex: 1, sessionId: null, questionsAsked: 0, playerName: '', connections: [], location: '', mode: 'chat', messaging: null, archetype: 'balanced', graphUpdates: null };
+var state = { personaIndex: 1, sessionId: null, questionsAsked: 0, playerName: '', connections: [], location: '', mode: 'gui', messaging: null, archetype: 'balanced', graphUpdates: null };
 var sending = false;
 var avatarColors = ['#6366f1','#ec4899','#f59e0b','#10b981','#8b5cf6','#f97316','#06b6d4'];
 
