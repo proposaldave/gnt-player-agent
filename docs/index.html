@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Give 'n Take Agent — Private AI Matchmaking on Sui</title>
+<title>Your Private Social Diary | Give 'n Take on Sui</title>
+<meta name="description" content="Every player owns a private AI agent that learns their social preferences, negotiates perfect matches, and never shares a word. Built on Sui blockchain.">
+<meta property="og:title" content="Your Private Social Diary | Give 'n Take">
+<meta property="og:description" content="How do you really feel about the people you play with? Your AI agent knows — and never tells.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your Private Social Diary | Give 'n Take">
+<meta name="twitter:description" content="A private AI agent that learns who you love playing with, who drains you, and never shares a word.">
 <style>
   :root {
     --bg: #0a0e1a;
@@ -17,7 +24,7 @@
     --warm: #f59e0b;
     --warm-glow: rgba(245,158,11,0.12);
     --text: #e2e8f0;
-    --text2: #94a3b8;
+    --text2: #a0aec0;
     --border: #1e293b;
     --radius: 12px;
   }
@@ -38,8 +45,8 @@
   .new-world-canvas canvas { width: 100%; height: 100%; display: block; }
   .header .tagline { color: var(--text); font-size: 13px; line-height: 1.4; font-weight: 400; }
   .header .sub { color: var(--text2); font-size: 11px; margin-top: 4px; }
-  .badges { display: flex; gap: 10px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
-  .badge { font-size: 15px; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); color: var(--text2); }
+  .badges { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+  .badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); color: var(--text2); }
   .badge.active { border-color: #34d39966; color: var(--green); }
   .badge.simulated { border-color: rgba(245,158,11,0.4) !important; color: var(--warm) !important; }
   .badge.sui { border-color: #4da2ff44; color: #4da2ff; }
@@ -290,7 +297,7 @@
   .data-card.old-world .card-label { color: #8a8a8a; }
   .data-card.new-world .card-label { color: var(--green); }
   .data-card .player-line { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-  .data-card.old-world .rating-num { font-size: 56px; font-weight: 700; color: #7a7a7a; text-align: center; padding: 18px 0 12px; font-family: monospace; }
+  .data-card.old-world .rating-num { font-size: 48px; font-weight: 700; color: #7a7a7a; text-align: center; padding: 14px 0 10px; font-family: monospace; }
   .data-card.old-world .rating-stars { text-align: center; font-size: 28px; color: #7a7a7a; margin-bottom: 12px; }
   .data-card.old-world .empty-line { height: 12px; background: #2a2a2a; border-radius: 4px; margin: 10px 0; opacity: 0.6; }
   .data-card.old-world .thats-it { text-align: center; font-size: 15px; color: #8a8a8a; margin-top: 16px; font-style: italic; }
@@ -313,6 +320,12 @@
     .container { padding: 10px; }
     .input-row { flex-wrap: wrap; }
     .finish-btn { width: 100%; margin-top: 4px; }
+    .data-compare { flex-direction: column; gap: 12px; }
+    .data-compare .compare-arrow { font-size: 24px; padding: 4px 0; }
+    .data-card { padding: 18px 20px; }
+    .badges { gap: 6px; }
+    .badge { font-size: 12px; padding: 4px 10px; }
+    .start-btn { padding: 14px; font-size: 15px; }
   }
 </style>
 </head>
@@ -320,11 +333,12 @@
 <div class="container">
   <div class="header">
     <div class="hero-canvas-wrap" id="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
-    <p class="tagline" style="font-size:23px;font-weight:600;line-height:1.5;">How do you really feel about the people in your community?<br>Your agent is your private social diary — you own it, you control it.<br>It negotiates perfect matches on your behalf, and never shares a word.</p>
+    <p class="tagline" style="font-size:20px;font-weight:700;line-height:1.4;margin-bottom:4px;">How do you <em>really</em> feel about the people you play with?</p>
+    <p class="sub" style="font-size:14px;color:var(--text2);margin-top:0;">Your private AI agent learns your preferences, negotiates perfect matches, and never shares a word.</p>
     <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge">Sui Messaging SDK</span>
-      <span class="badge claude" id="badge-ai">LLM (Gemini)</span>
+      <span class="badge claude" id="badge-ai">AI Agent</span>
       <span class="badge seal" id="badge-seal">Seal Encryption</span>
       <span class="badge" id="badge-memwal">MemWal</span>
     </div>
@@ -350,12 +364,12 @@
         <div class="rating-stars">&#x2B50;&#x2B50;&#x2B50;&#x2BEA;</div>
         <div class="empty-line"></div>
         <div class="empty-line" style="width:60%"></div>
-        <div class="thats-it">Every person in your community reduced to one number.</div>
+        <div class="thats-it">Everyone in your club, reduced to one number.</div>
       </div>
-      <div class="compare-arrow" style="flex-direction:column;gap:6px;text-align:center">&#x2192;<span style="font-size:15px;font-weight:600;color:var(--accent2)">Let's change that.</span></div>
+      <div class="compare-arrow" style="flex-direction:column;gap:6px;text-align:center">&#x2192;<span style="font-size:14px;font-weight:600;color:var(--accent2)">What if you could?</span></div>
       <div class="data-card new-world">
-        <div class="card-label">Give 'n Take</div>
-        <div class="new-world-canvas"><canvas id="compare-canvas"></canvas></div>
+        <div class="card-label">Your Social Diary</div>
+        <div class="new-world-canvas"><canvas id="compare-canvas" aria-label="Interactive social graph showing your connections to other players"></canvas></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#34d399;color:#0a0e1a;font-size:10px;font-weight:700">SM</span></span><span class="signal-text"><strong class="green">Sarah M.</strong> &#x2014; go-to partner &#xB7; always brings energy</span></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f59e0b;color:#0a0e1a;font-size:10px;font-weight:700">TK</span></span><span class="signal-text"><strong class="warm">Tom K.</strong> &#x2014; most fun in the club &#xB7; pushes your game</span></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f87171;color:#0a0e1a;font-size:10px;font-weight:700">MD</span></span><span class="signal-text"><strong class="red">Mike D.</strong> &#x2014; avoid &#xB7; reason stays private</span></div>
@@ -371,7 +385,8 @@
       <button class="mode-opt active" id="mode-gui" onclick="setMode('gui')">GUI</button>
     </div>
     <div class="mode-hint" id="mode-hint"></div>
-    <button class="start-btn" id="start-btn" onclick="startConversation()">&#x1F512; Start Conversation with your Private Give 'n Take Agent</button>
+    <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">&#x1F512; Meet Your Private Agent</button>
+    <p style="text-align:center;font-size:11px;color:var(--green);margin-top:8px;opacity:0.8;">Encrypted on Sui blockchain. Not even we can read it.</p>
     <div class="persona-list" id="persona-list" style="display:none"></div>
   </div>
 
@@ -433,7 +448,7 @@
       </div>
       <div class="graph-wrap" id="graph-wrap">
         <div class="graph-title">Your Community Graph</div>
-        <canvas id="graph-canvas"></canvas>
+        <canvas id="graph-canvas" aria-label="Your community graph showing player connections and relationship strength"></canvas>
         <div class="graph-completion" id="graph-completion"></div>
         <div class="node-detail" id="node-detail"></div>
       </div>
@@ -471,8 +486,8 @@
         <div class="section-title">&#x1F310; Community Intelligence</div>
         <div style="font-size:11px;color:var(--text2);padding:0 0 8px;">Should your agent help improve matches for the whole community, or only for you?</div>
         <div class="settings-row" style="flex-direction:column;align-items:stretch;gap:6px">
-          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" style="accent-color:var(--accent)"> <strong>&#x1F512; Private only</strong> &#x2014; my agent matches only for me. No data leaves my agent.</label>
-          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" checked style="accent-color:var(--green)"> <strong>&#x1F91D; Community contributor</strong> &#x2014; my agent shares anonymized patterns to improve matches for everyone. Your preferences, avoids, and reasons are never shared.</label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" checked style="accent-color:var(--accent)"> <strong>&#x1F512; Private only</strong> &#x2014; my agent matches only for me. No data leaves my agent.</label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px"><input type="radio" name="community" style="accent-color:var(--green)"> <strong>&#x1F91D; Community contributor</strong> &#x2014; my agent shares anonymized patterns to improve matches for everyone. Your preferences, avoids, and reasons are never shared.</label>
         </div>
       </div>
 
@@ -536,8 +551,11 @@
   <div class="results" id="results"></div>
 </div>
 
-<!-- Roadmap button -->
-<button class="roadmap-btn" onclick="document.getElementById('roadmap-overlay').classList.add('visible')">&#x1F4CB; Product Roadmap</button>
+<!-- Footer links -->
+<div style="position:fixed;bottom:16px;right:16px;display:flex;gap:8px;z-index:100;">
+  <a href="https://github.com/Give-N-Take" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text2);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:5px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">&#x1F4BB; View Source</a>
+  <button class="roadmap-btn" style="position:static;" onclick="document.getElementById('roadmap-overlay').classList.add('visible')">&#x1F4CB; Roadmap</button>
+</div>
 
 <!-- Roadmap overlay -->
 <div class="roadmap-overlay" id="roadmap-overlay" onclick="if(event.target===this)this.classList.remove('visible')">
@@ -1866,7 +1884,7 @@ function sessionClicked(date, type) {
 (function() {
   var b;
   // LIVE (green ✓)
-  b = document.getElementById('badge-ai'); b.textContent = '\u2713 LLM (Gemini)'; b.classList.add('active');
+  b = document.getElementById('badge-ai'); b.textContent = '\u2713 AI Agent'; b.classList.add('active');
   b = document.getElementById('messaging-badge'); b.textContent = '\u2713 Sui Messaging SDK'; b.classList.add('active');
   // Sui Testnet — LIVE (messaging SDK runs on testnet)
   b = document.getElementById('badge-sui'); b.textContent = '\u2713 Sui Testnet'; b.classList.add('active');
