@@ -386,7 +386,7 @@
     </div>
     <div class="mode-hint" id="mode-hint"></div>
     <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">&#x1F512; Meet Your Give Diary Agent</button>
-    <p style="text-align:center;font-size:11px;color:var(--green);margin-top:8px;opacity:0.8;">Encrypted on Sui blockchain. Not even we can read it.</p>
+
     <div class="persona-list" id="persona-list" style="display:none"></div>
   </div>
 
@@ -551,44 +551,6 @@
   <div class="results" id="results"></div>
 </div>
 
-<!-- Footer links -->
-<div style="position:fixed;bottom:16px;right:16px;display:flex;gap:8px;z-index:100;">
-  <a href="https://github.com/Give-N-Take" target="_blank" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 14px;color:var(--text2);font-size:11px;text-decoration:none;display:flex;align-items:center;gap:5px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text2)'">&#x1F4BB; View Source</a>
-  <button class="roadmap-btn" style="position:static;" onclick="document.getElementById('roadmap-overlay').classList.add('visible')">&#x1F4CB; Roadmap</button>
-</div>
-
-<!-- Roadmap overlay -->
-<div class="roadmap-overlay" id="roadmap-overlay" onclick="if(event.target===this)this.classList.remove('visible')">
-  <div class="roadmap-panel">
-    <button class="close-x" onclick="document.getElementById('roadmap-overlay').classList.remove('visible')">&#x2715;</button>
-    <h1>Give Diary Product Roadmap</h1>
-    <p style="color:var(--accent2);font-style:italic;margin-bottom:16px;">Get this working for Krista first. When she trusts it completely and pours everything she knows into it, the system learns from the best coordinator on the planet. That turns into a human-in-the-loop stage where the system becomes more autonomous and Krista has less and less manual coordination work to do. Then the next domino: NEPC staff. Then the final domino: the players.</p>
-
-    <div class="phase">
-      <div class="phase-label active-phase">&#x25CF; Phase 1: Krista's Agent</div>
-      <p>Krista gets a private agent she can pour everything into. Player observations. Group chemistry notes. Who to keep apart. The agent stores it all, encrypted and searchable. Every time she builds a group, the system records her decision. Every edit to an AI suggestion is training data. Adoption rate is the metric: what percentage of AI suggestions does Krista use as-is, edit, or discard? That number going up is the proof the system is learning.</p>
-      <p><strong>The trust loop:</strong> Krista tries a suggestion. It works. She tries another. It works better. She starts trusting the easy ones and focusing on the hard ones. Her workload drops while quality stays the same or improves.</p>
-    </div>
-
-    <div class="phase">
-      <div class="phase-label future-phase">&#x25CB; Phase 2: Expert Staff Get Agents</div>
-      <p>The pros, coordinators, and front desk staff each get their own agent scoped to their expertise. A teaching pro notices skill nuances. A front desk staffer notices who arrives together. Each observation enriches the community graph. The AI now learns from multiple expert perspectives, not just one.</p>
-    </div>
-
-    <div class="phase">
-      <div class="phase-label future-phase">&#x25CB; Phase 3: Every Player Gets Their Own Agent</div>
-      <p>A personalized invitation feed. Sessions the agent thinks you will love. Private encrypted conversations where you tell the agent who you love playing with, who drained you, what you want more of. Because privacy is guaranteed by Sui cryptography, players can be brutally honest. The system coordinates around their honest preferences without ever exposing them.</p>
-      <p><strong>The flywheel:</strong> A few players try it. Better matches appear. Others notice and want in. Trust builds through experience. Adoption compounds because the experience is jaw-dropping.</p>
-    </div>
-
-    <div class="phase">
-      <div class="phase-label future-phase">&#x25CB; Phase 4: Multi-Club Expansion</div>
-      <p>Every correction from every coordinator at every club trains the same system. New clubs adopt intelligence that already understands great group composition, seeded by patterns Krista taught it. Coordinator dependency dissolves as intelligence scales. Contribution history becomes portable across clubs via on-chain reputation.</p>
-    </div>
-
-    <p style="margin-top:14px;font-size:11px;color:var(--text2);">NEPC first &#x2192; pickleball &#x2192; social sports &#x2192; every real-world community built on human value exchange.</p>
-  </div>
-</div>
 
 <script>
 /* ================================================================
