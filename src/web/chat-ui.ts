@@ -9,13 +9,13 @@ export function chatPage(): string {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Private Social Diary | Give 'n Take on Sui</title>
+<title>Your Private Social Diary | Give Diary on Sui</title>
 <meta name="description" content="Every player owns a private AI agent that learns their social preferences, negotiates perfect matches, and never shares a word. Built on Sui blockchain.">
-<meta property="og:title" content="Your Private Social Diary | Give 'n Take">
+<meta property="og:title" content="Your Private Social Diary | Give Diary">
 <meta property="og:description" content="How do you really feel about the people you play with? Your AI agent knows — and never tells.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Your Private Social Diary | Give 'n Take">
+<meta name="twitter:title" content="Your Private Social Diary | Give Diary">
 <meta name="twitter:description" content="A private AI agent that learns who you love playing with, who drains you, and never shares a word.">
 <style>
   :root {
@@ -568,7 +568,7 @@ export function chatPage(): string {
 <div class="roadmap-overlay" id="roadmap-overlay" onclick="if(event.target===this)this.classList.remove('visible')">
   <div class="roadmap-panel">
     <button class="close-x" onclick="document.getElementById('roadmap-overlay').classList.remove('visible')">\u2715</button>
-    <h1>Give 'n Take Product Roadmap</h1>
+    <h1>Give Diary Product Roadmap</h1>
     <p style="color:var(--accent2);font-style:italic;margin-bottom:16px;">Get this working for Krista first. When she trusts it completely and pours everything she knows into it, the system learns from the best coordinator on the planet. That turns into a human-in-the-loop stage where the system becomes more autonomous and Krista has less and less manual coordination work to do. Then the next domino: NEPC staff. Then the final domino: the players.</p>
 
     <div class="phase">
@@ -1752,7 +1752,7 @@ function addMessage(text, type, encrypted) {
   var div = document.createElement('div');
   div.className = 'msg ' + type;
   if (type === 'agent') {
-    div.innerHTML = '<div class="label">GnT Agent</div>' + escapeHtml(text);
+    div.innerHTML = '<div class="label">Give Diary Agent</div>' + escapeHtml(text);
   } else if (type === 'feed-event') {
     div.innerHTML = '<div class="label" style="color:var(--green)">\u{1F4E8} Feed Update</div>' + escapeHtml(text);
   } else {
@@ -1781,7 +1781,7 @@ function showTyping() {
   var msgs = activeMessages();
   var div = document.createElement('div');
   div.className = 'msg agent'; div.id = 'typing-indicator';
-  div.innerHTML = '<div class="label">GnT Agent</div><div class="typing-dots"><span></span><span></span><span></span></div>';
+  div.innerHTML = '<div class="label">Give Diary Agent</div><div class="typing-dots"><span></span><span></span><span></span></div>';
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
