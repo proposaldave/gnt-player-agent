@@ -374,7 +374,7 @@ export function chatPage(): string {
       </div>
       <div class="compare-arrow" style="flex-direction:column;gap:6px;text-align:center">\u2192<span style="font-size:14px;font-weight:600;color:var(--accent2)">What if you could?</span></div>
       <div class="data-card new-world">
-        <div class="card-label">Your Social Diary</div>
+        <div class="card-label">Give Diary</div>
         <div class="new-world-canvas"><canvas id="compare-canvas" aria-label="Interactive social graph showing your connections to other players"></canvas></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#34d399;color:#0a0e1a;font-size:10px;font-weight:700">SM</span></span><span class="signal-text"><strong class="green">Sarah M.</strong> \u2014 go-to partner \u00B7 always brings energy</span></div>
         <div class="signal-row"><span class="signal-icon" style="font-size:0"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#f59e0b;color:#0a0e1a;font-size:10px;font-weight:700">TK</span></span><span class="signal-text"><strong class="warm">Tom K.</strong> \u2014 most fun in the club \u00B7 pushes your game</span></div>
@@ -392,7 +392,7 @@ export function chatPage(): string {
       <button class="mode-opt active" id="mode-gui" onclick="setMode('gui')">GUI</button>
     </div>
     <div class="mode-hint" id="mode-hint"></div>
-    <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">\u{1F512} Meet Your Private Agent</button>
+    <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">\u{1F512} Meet Your Give Diary Agent</button>
     <p style="text-align:center;font-size:11px;color:var(--green);margin-top:8px;opacity:0.8;">Encrypted on Sui blockchain. Not even we can read it.</p>
     <div class="persona-list" id="persona-list" style="display:none"></div>
   </div>
@@ -1620,7 +1620,7 @@ function startConversation() {
   fetch('/api/start', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      if (data.error) { showError(data.error); btn.disabled = false; btn.textContent = 'Meet Your Private Agent'; return; }
+      if (data.error) { showError(data.error); btn.disabled = false; btn.textContent = 'Meet Your Give Diary Agent'; return; }
       state.sessionId = data.sessionId;
       state.playerName = data.playerName;
       state.connections = data.connections || [];
@@ -1692,7 +1692,7 @@ function startConversation() {
         }, 80);
       }
     })
-    .catch(function(e) { showError('Failed to start: ' + e.message); btn.disabled = false; btn.textContent = 'Meet Your Private Agent'; });
+    .catch(function(e) { showError('Failed to start: ' + e.message); btn.disabled = false; btn.textContent = 'Meet Your Give Diary Agent'; });
 }
 
 function sendMessage() {
