@@ -362,7 +362,7 @@
     <div class="hero-canvas-wrap" id="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
     <p class="tagline" style="font-size:20px;font-weight:700;line-height:1.4;margin-bottom:4px;">Your private pickleball diary &#x2014; powered by AI.</p>
     <p class="sub" style="font-size:14px;color:var(--text2);margin-top:0;">Talk to your diary about players, get advice on improving, and train with interactive academy modules.</p>
-    <div class="badges">
+    <div class="badges" style="display:none;">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge">Sui Messaging SDK</span>
       <span class="badge claude" id="badge-ai">AI Agent</span>
@@ -1087,18 +1087,32 @@ function setProduct(p) {
   /* Swap hero text */
   var tagline = document.querySelector('.header .tagline');
   var sub = document.querySelector('.header .sub');
+  var badges = document.querySelector('.badges');
+  var startBtn = document.getElementById('start-btn');
   if (p === 'tool') {
     tagline.innerHTML = 'Your private pickleball diary &#x2014; powered by AI.';
     sub.innerHTML = 'Talk to your diary about players, get advice on improving, and train with interactive academy modules.';
+    badges.style.display = 'none';
+    startBtn.innerHTML = '&#x1F512; Login to your Give Diary';
   } else {
     tagline.innerHTML = 'How do you <em>really</em> feel about the people you play with?';
     sub.innerHTML = 'Your private AI agent learns your preferences, negotiates perfect matches, and never shares a word.';
+    badges.style.display = '';
+    startBtn.innerHTML = '&#x1F512; Login to your Give Diary';
   }
 }
 function startDiaryTopic(topic) {
-  /* For now, start the conversation — future: pre-seed with topic context */
+  state.diaryTopic = topic;
+  state.mode = 'chat';
   startConversation();
 }
+
+/* ============ DIARY TOPIC CONVERSATION ============ */
+var diaryTopicGreetings = {
+  community: "Hey! Let's talk about the people in your community. Think of someone you play with regularly \u2014 who comes to mind first? Tell me their name and what it's like playing with them.",
+  improve: "Let's check in on your game. What's one thing you've been working on lately? It could be a specific shot, your positioning, consistency \u2014 whatever's on your mind.",
+  academy: "Welcome to Four Bases Academy \u2014 a structured path from beginner to advanced. There are four levels, each with specific skills to master.\n\n\u{1F7E2} **Level 1 \u2014 First Rally:** Learn the basics \u2014 scoring, serving, the kitchen rule, and keeping the ball in play.\n\u{1F7E1} **Level 2 \u2014 Court Awareness:** Positioning, shot selection, and reading your opponent.\n\u{1F7E2} **Level 3 \u2014 Competitive Play:** Strategy, stacking, resets, and pressure management.\n\u{1F535} **Level 4 \u2014 Tournament Ready:** Advanced patterns, mental game, and match preparation.\n\nWhich level are you curious about? Or tell me where you are in your game and I'll suggest where to start."
+};
 
 /* ============ MODE TOGGLE ============ */
 function setMode(m) {
@@ -2085,8 +2099,15 @@ function startConversation() {
       sealedSignalIds: []
     };
 
-    // Generate greeting
-    var greetingResult = demoGreeting(ctx);
+    // Generate greeting — diary topic or matching demo
+    var greetingResult;
+    if (state.diaryTopic && diaryTopicGreetings[state.diaryTopic]) {
+      greetingResult = { text: diaryTopicGreetings[state.diaryTopic], graphUpdates: [] };
+      _localConvo.diaryTopic = state.diaryTopic;
+      state.diaryTopic = null;
+    } else {
+      greetingResult = demoGreeting(ctx);
+    }
     _localConvo.messages.push({ role: 'assistant', content: greetingResult.text, timestamp: Date.now() });
     _localConvo.questionsAsked = 1;
     _localConvo.phase = nextPhase(_localConvo.phase, _localConvo.questionsAsked);
@@ -2120,7 +2141,9 @@ function startConversation() {
     state.graphUpdates = data.graphUpdates || null;
 
     document.getElementById('persona-section').style.display = 'none';
-    document.getElementById('data-compare-section').style.display = 'none';
+    document.getElementById('product-toggle').style.display = 'none';
+    document.getElementById('tool-section').style.display = 'none';
+    document.getElementById('network-section').style.display = 'none';
     document.getElementById('hero-canvas-wrap').style.display = 'none';
     document.querySelector('.tagline').style.fontSize = '13px';
     document.querySelector('.tagline').style.marginBottom = '2px';
