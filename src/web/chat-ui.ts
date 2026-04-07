@@ -392,7 +392,7 @@ export function chatPage(): string {
       <button class="mode-opt active" id="mode-gui" onclick="setMode('gui')">GUI</button>
     </div>
     <div class="mode-hint" id="mode-hint"></div>
-    <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">\u{1F512} Meet Your Give Diary Agent</button>
+    <button class="start-btn" id="start-btn" onclick="startConversation()" aria-label="Start a private conversation with your AI agent">\u{1F512} Login to your Give Diary</button>
 
     <div class="persona-list" id="persona-list" style="display:none"></div>
   </div>
@@ -1582,7 +1582,7 @@ function startConversation() {
   fetch('/api/start', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      if (data.error) { showError(data.error); btn.disabled = false; btn.textContent = 'Meet Your Give Diary Agent'; return; }
+      if (data.error) { showError(data.error); btn.disabled = false; btn.textContent = 'Login to your Give Diary'; return; }
       state.sessionId = data.sessionId;
       state.playerName = data.playerName;
       state.connections = data.connections || [];
@@ -1654,7 +1654,7 @@ function startConversation() {
         }, 80);
       }
     })
-    .catch(function(e) { showError('Failed to start: ' + e.message); btn.disabled = false; btn.textContent = 'Meet Your Give Diary Agent'; });
+    .catch(function(e) { showError('Failed to start: ' + e.message); btn.disabled = false; btn.textContent = 'Login to your Give Diary'; });
 }
 
 function sendMessage() {
