@@ -397,13 +397,6 @@ export function chatPage(): string {
   <!-- TOOL SECTION: Diary + Academy -->
   <div id="tool-section" class="tool-section">
     <div class="diary-topics">
-      <div class="diary-topic-card" onclick="startDiaryTopic('community')">
-        <div class="topic-icon">\u{1F465}</div>
-        <div class="topic-info">
-          <h3>People in My Community</h3>
-          <p>Talk to your diary about players you play with \u2014 get advice on chemistry, communication, and getting along better</p>
-        </div>
-      </div>
       <div class="diary-topic-card" onclick="startDiaryTopic('improve')">
         <div class="topic-icon">\u{1F4C8}</div>
         <div class="topic-info">
