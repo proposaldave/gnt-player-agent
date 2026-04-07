@@ -396,34 +396,42 @@ export function chatPage(): string {
 
   <!-- TOOL SECTION: Diary + Academy -->
   <div id="tool-section" class="tool-section">
-    <div class="diary-topics">
-      <div class="diary-topic-card" onclick="startDiaryTopic('improve')">
-        <div class="topic-icon">\u{1F4C8}</div>
-        <div class="topic-info">
-          <h3>My Game Improvement</h3>
-          <p>Track what you\u2019re working on, get personalized tips, and see how far you\u2019ve come</p>
+    <div class="mode-toggle" id="tool-mode-toggle">
+      <button class="mode-opt active" id="tool-mode-chat" onclick="setToolMode('chat')">Chat</button>
+      <button class="mode-opt" id="tool-mode-gui" onclick="setToolMode('gui')">GUI</button>
+    </div>
+    <div id="tool-chat-content">
+      <div class="diary-topics">
+        <div class="diary-topic-card" onclick="startDiaryTopic('improve')">
+          <div class="topic-icon">\u{1F4C8}</div>
+          <div class="topic-info">
+            <h3>My Game Improvement</h3>
+            <p>Track what you\u2019re working on, get personalized tips, and see how far you\u2019ve come</p>
+          </div>
         </div>
-      </div>
-      <div class="diary-topic-card" onclick="startDiaryTopic('academy')">
-        <div class="topic-icon">\u{1F393}</div>
-        <div class="topic-info">
-          <h3>Four Levels Academy</h3>
-          <p>A structured path from beginner to advanced \u2014 four levels, each with specific skills to master</p>
+        <div class="diary-topic-card" onclick="startDiaryTopic('academy')">
+          <div class="topic-icon">\u{1F393}</div>
+          <div class="topic-info">
+            <h3>Four Levels Academy</h3>
+            <p>A structured path from beginner to advanced \u2014 four levels, each with specific skills to master</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="module-cards">
-      <div class="module-card">
-        <span class="module-badge live">Playable</span>
-        <h3>\u{1F3BE} Anticipating Out Balls</h3>
-        <p>3D training game \u2014 learn to read the ball and make smarter decisions at the baseline</p>
-        <button class="module-play-btn" onclick="window.open('outballs.html','_blank')">Play Now</button>
-      </div>
-      <div class="module-card">
-        <span class="module-badge live">Playable</span>
-        <h3>\u{1F3D3} Four Levels Curriculum</h3>
-        <p>See the full academy progression \u2014 from first rally to tournament-ready</p>
-        <button class="module-play-btn" onclick="window.open('four-levels.html','_blank')">Explore</button>
+    <div id="tool-gui-content" style="display:none;">
+      <div class="module-cards">
+        <div class="module-card">
+          <span class="module-badge live">Playable</span>
+          <h3>\u{1F3BE} Anticipating Out Balls</h3>
+          <p>3D training game \u2014 learn to read the ball and make smarter decisions at the baseline</p>
+          <button class="module-play-btn" onclick="window.open('outballs.html','_blank')">Play Now</button>
+        </div>
+        <div class="module-card">
+          <span class="module-badge live">Playable</span>
+          <h3>\u{1F3D3} Four Levels Curriculum</h3>
+          <p>See the full academy progression \u2014 from first rally to tournament-ready</p>
+          <button class="module-play-btn" onclick="window.open('four-levels.html','_blank')">Explore</button>
+        </div>
       </div>
     </div>
   </div>
@@ -656,6 +664,12 @@ function setProduct(p) {
     badges.style.display = '';
     startBtn.innerHTML = '\\u{1F512} Login to your Give Diary';
   }
+}
+function setToolMode(m) {
+  document.getElementById('tool-mode-chat').className = 'mode-opt' + (m === 'chat' ? ' active' : '');
+  document.getElementById('tool-mode-gui').className = 'mode-opt' + (m === 'gui' ? ' active' : '');
+  document.getElementById('tool-chat-content').style.display = m === 'chat' ? '' : 'none';
+  document.getElementById('tool-gui-content').style.display = m === 'gui' ? '' : 'none';
 }
 function startDiaryTopic(topic) {
   state.diaryTopic = topic;
