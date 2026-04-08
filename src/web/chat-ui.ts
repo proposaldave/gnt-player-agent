@@ -366,9 +366,9 @@ export function chatPage(): string {
 <div class="container">
   <div class="header">
     <div class="hero-canvas-wrap" id="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
-    <p class="tagline" style="font-size:20px;font-weight:700;line-height:1.4;margin-bottom:4px;">Your private pickleball diary \u2014 powered by AI.</p>
-    <p class="sub" style="font-size:14px;color:var(--text2);margin-top:0;">Talk to your diary about players, get advice on improving, and train with interactive academy modules.</p>
-    <div class="badges" style="display:none;">
+    <p class="tagline" style="font-size:20px;font-weight:700;line-height:1.4;margin-bottom:4px;">How do you <em>really</em> feel about the people you play with?</p>
+    <p class="sub" style="font-size:14px;color:var(--text2);margin-top:0;">Your private AI agent learns your preferences, negotiates perfect matches, and never shares a word.</p>
+    <div class="badges">
       <span class="badge sui" id="badge-sui">Sui Testnet</span>
       <span class="badge messaging" id="messaging-badge" style="display:none">Sui Messaging SDK</span>
       <span class="badge claude" id="badge-ai">AI Agent</span>
@@ -390,12 +390,12 @@ export function chatPage(): string {
 
   <!-- Product Toggle -->
   <div class="product-toggle" id="product-toggle">
-    <button class="product-opt active" id="product-tool" onclick="setProduct('tool')">Come for the tool</button>
-    <button class="product-opt" id="product-network" onclick="setProduct('network')">Stay for the network</button>
+    <button class="product-opt" id="product-tool" onclick="setProduct('tool')">Come for the tool</button>
+    <button class="product-opt active" id="product-network" onclick="setProduct('network')">Stay for the network</button>
   </div>
 
   <!-- TOOL SECTION: Diary + Academy -->
-  <div id="tool-section" class="tool-section">
+  <div id="tool-section" class="tool-section" style="display:none;">
     <div class="mode-toggle" id="tool-mode-toggle">
       <button class="mode-opt active" id="tool-mode-chat" onclick="setToolMode('chat')">Chat</button>
       <button class="mode-opt" id="tool-mode-gui" onclick="setToolMode('gui')">GUI</button>
@@ -437,7 +437,7 @@ export function chatPage(): string {
   </div>
 
   <!-- NETWORK SECTION: Comparison Cards (existing) -->
-  <div id="network-section" style="display:none;">
+  <div id="network-section">
     <div id="data-compare-section">
       <div class="data-compare">
         <div class="data-card old-world">
@@ -463,7 +463,7 @@ export function chatPage(): string {
 
   <!-- Start Section -->
   <div id="persona-section" class="persona-section">
-    <div class="mode-toggle" id="mode-toggle" style="display:none;">
+    <div class="mode-toggle" id="mode-toggle">
       <button class="mode-opt" id="mode-chat" onclick="setMode('chat')">Chat</button>
       <button class="mode-opt active" id="mode-gui" onclick="setMode('gui')">GUI</button>
     </div>
@@ -636,7 +636,7 @@ export function chatPage(): string {
 
 
 <script>
-var state = { personaIndex: 1, sessionId: null, questionsAsked: 0, playerName: '', connections: [], location: '', mode: 'gui', messaging: null, archetype: 'balanced', graphUpdates: null, productMode: 'tool' };
+var state = { personaIndex: 1, sessionId: null, questionsAsked: 0, playerName: '', connections: [], location: '', mode: 'gui', messaging: null, archetype: 'balanced', graphUpdates: null, productMode: 'network' };
 var sending = false;
 var avatarColors = ['#6366f1','#ec4899','#f59e0b','#10b981','#8b5cf6','#f97316','#06b6d4'];
 
